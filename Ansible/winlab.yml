@@ -14,3 +14,8 @@
   roles:
     - sql
     - common
+
+- hosts: sp
+  roles:
+    - sp
+    - common
