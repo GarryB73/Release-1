@@ -1,0 +1,30 @@
+---
+ansible_user: administrator
+ansible_password: "Pa55word"
+ansible_port: 5985
+ansible_connection: winrm
+ansible_winrm_server_cert_validation: ignore
+
+domain: "test.co.uk"
+netbios_domain: "test"
+top_level_domain: "co.uk" 
+domain_admin: "{{ ansible_user }}@{{ domain }}"
+domain_admin_username: "{{ ansible_user }}"
+domain_admin_password: "Pa55word"
+domain_safemode_password: "Pa55word"
+
+primary_domain_controller: "testdc001"
+#replica_domain_controller: "ab-rdc"
+exchange_server: "testsxc001"
+sql_server: "testsql001"
+
+fqdn_primary_domain_controller: "{{ primary_domain_controller }}.{{ domain }}"
+#fqdn_replica_domain_controller: "{{ replica_domain_controller }}.{{ domain }}"
+fqdn_exchange_server: "{{ exchange_server }}.{{ domain }}"
+#fqdn_sql_server: "{{ sql_server }}.{{ domain }}"
+
+#dhcp_scope_name: "DHCPScope"
+#dhcp_scope_start: "10.175.128.185"
+#dhcp_scope_end: "10.175.128.190"
+#dhcp_scope_submask: "255.255.255.192"
+#dhcp_scope_router: "10.175.128.185"
