@@ -7,7 +7,7 @@
 
 - name: Change the hostname
   ansible.windows.win_hostname:
-    name: "{{ exchange_controller }}"
+    name: "{{ exchange_server }}"
   register: res
 
 - name: Reboot
