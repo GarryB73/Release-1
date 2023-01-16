@@ -3,6 +3,7 @@
   roles:
     - pdc
     #- pdc_userdata
+    #- pdc_gpos
     - common
 
 - hosts: exc

@@ -5,7 +5,7 @@
     name: Employees
     description: Employee Group
     state: present
-# Create OU for User locations (Staff, Admin)
+# Create OU for User locations
 - name: Install nuget packge for OU creation
   win_shell: install-packageprovider -name nuget -force
 - name: Install XactiveDirectory package for OU creation
@@ -22,6 +22,27 @@
     resource_name: ADOrganizationalUnit
     name: "Admins"
     path: "dc={{ netbios_domain }}, dc={{ top_level_domain }}"
+# Create OU for Server locations
+- name: Create OU for Servers
+  win_dsc:
+    resource_name: ADOrganizationalUnit
+    name: "Servers"
+    path: "dc={{ netbios_domain }}, dc={{ top_level_domain }}"
+- name: Create OU for Exchange Servers
+  win_dsc:
+    resource_name: ADOrganizationalUnit
+    name: "Exchange"
+    path: "dc={{Servers}},dc={{ netbios_domain }}, dc={{ top_level_domain }}"
+- name: Create OU for Sharepoint Servers
+  win_dsc:
+    resource_name: ADOrganizationalUnit
+    name: "Sharepoint"
+    path: "dc={{Servers}},dc={{ netbios_domain }}, dc={{ top_level_domain }}"
+- name: Create OU for SQL Servers
+  win_dsc:
+    resource_name: ADOrganizationalUnit
+    name: "SQL"
+    path: "dc={{Servers}},dc={{ netbios_domain }}, dc={{ top_level_domain }}"  
 # Create multiple users for Domain and add to respective groups
 - name: Create administrator Account
   community.windows.win_domain_user:
