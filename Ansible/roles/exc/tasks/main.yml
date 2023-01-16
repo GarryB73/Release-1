@@ -5,9 +5,9 @@
     ipv4_addresses: 
       - "{{ groups['pdc'][0] }}"
 
-- name: Change computer name
+- name: Change the hostname
   ansible.windows.win_hostname:
-    hostname: "{{ exchange_server }}"
+    name: "{{ exchange_controller }}"
   register: res
 
 - name: Reboot
