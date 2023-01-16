@@ -4,19 +4,19 @@
     - pdc
     #- pdc_userdata
     #- pdc_gpos
-    - common
+    #- common
 
 - hosts: exc
   roles:
     - exc
-    - common
+    #- common
 
 - hosts: sql
   roles:
     - sql
-    - common
+    #- common
 
 - hosts: sp
   roles:
     - sp
-    - common
+    #- common
