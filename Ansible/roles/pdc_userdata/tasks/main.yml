@@ -32,17 +32,17 @@
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "Exchange"
-    path: "dc={{Servers}},dc={{ netbios_domain }}, dc={{ top_level_domain }}"
+    path: "ou={{Servers}},dc={{ netbios_domain }}, dc={{ top_level_domain }}"
 - name: Create OU for Sharepoint Servers
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "Sharepoint"
-    path: "dc={{Servers}},dc={{ netbios_domain }}, dc={{ top_level_domain }}"
+    path: "ou={{Servers}},dc={{ netbios_domain }}, dc={{ top_level_domain }}"
 - name: Create OU for SQL Servers
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "SQL"
-    path: "dc={{Servers}},dc={{ netbios_domain }}, dc={{ top_level_domain }}"  
+    path: "ou={{Servers}},dc={{ netbios_domain }}, dc={{ top_level_domain }}"  
 # Create multiple users for Domain and add to respective groups
 - name: Create administrator Account
   community.windows.win_domain_user:
