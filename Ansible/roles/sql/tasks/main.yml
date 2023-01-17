@@ -31,4 +31,4 @@
     name: mssql-server
     state: present
 
-- name: Configure SQL Server
+#- name: Configure SQL Server
