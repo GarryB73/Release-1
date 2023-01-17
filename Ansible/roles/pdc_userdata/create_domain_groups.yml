@@ -1,0 +1,6 @@
+# Create Groups for Domain
+- name: Create user group
+  ansible.windows.win_group:
+    name: Employees
+    description: Employee Group
+    state: present
