@@ -16,6 +16,10 @@
 #    - exc
     #- common
 
+#- hosts: sql
+#  roles:
+#  - sql
+
 #- hosts: sp
 #  roles:
 #    - sp

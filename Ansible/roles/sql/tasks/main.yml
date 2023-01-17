@@ -1,4 +1,4 @@
-- include: pre-reqs.yml
 #- include: domain_join.yml
 #- include: Create_service_account.yml
-#- include: install_sql.yml
+#- include: pre-reqs.yml
+- include: install_sql.yml
