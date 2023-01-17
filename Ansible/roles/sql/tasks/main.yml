@@ -25,3 +25,10 @@
 - name: reboot after domain join
   win_reboot:
   when: domain_joined.reboot_required
+
+- name: Windows | Install SQL Servers
+  win_psmodule: 
+    name: mssql-server
+    state: present
+
+- name: Configure SQL Server
