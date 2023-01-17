@@ -1,7 +1,7 @@
-# Path to download installation media to
-mssql_installation_path: c:\SQLInstall
+# Path to installation media
+mssql_installation_path: C:\SQLInstall
 
-# instance details
+# Instance details
 mssql_instance_name: Test
 mssql_drive: C
 mssql_userdbvol_name: testdb
@@ -15,16 +15,16 @@ mssql_sqlsvc_account_pass: "Pa55word"
 mssql_agentsvc_account: test\sql_agt
 mssql_agentsvc_account_pass: "Pa55word"
 
-# volume paths
+# Volume paths
 mssql_userdbvol_path: "{{ mssql_drive }}:\\{{ mssql_userdbvol_name }}"
 mssql_db_accesspath: "{{ mssql_userdbvol_path }}\\DatabaseFiles"
 mssql_logs_accesspath: "{{ mssql_userdbvol_path }}\\DatabaseLogs"
 
-# shared files paths
+# Shared files paths
 mssql_installshared_path: C:\Program Files\Microsoft SQL Server
 mssql_installsharedwow_path: C:\Program Files (x86)\Microsoft SQL Server
 
-# instance path
+# Instance path
 mssql_instance_path: "C:\\Program Files\\Microsoft SQL Server\\{{ mssql_instance_name }}"
 
 # SQL DB and Logging Paths
@@ -45,7 +45,6 @@ mssql_sysadmin_accounts:
   - Test\Domain Admins
   - Test\Administrator
 
-# Install SQL Server
 - name: Install SQL Server
   win_dsc:
     resource_name: SQLSetup
