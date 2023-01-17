@@ -48,41 +48,7 @@ mssql_sysadmin_accounts:
   - Test\Domain Admins
   - Test\Administrator
 
-# SQL install may fail if a pending reboot is detected
-
-- name: Ensure that a reboot is not pending
-  when: ansible_reboot_pending
-  debug:
-    msg: 'Pending reboot detected'
-  changed_when: true
-  notify: reboot windows
-
-- meta: flush_handlers
-
-- name: Fetch SQL Media Downloader
-  win_get_url:
-    url: "{{ mssql_installation_source }}"
-    dest: "{{ mssql_temp_download_path }}\\SQLServer2017-SSEI-Dev.exe"
-
-- name: Use Media Downloader to fetch SQL Installation CABs to {{ mssql_installation_path }}
-  win_shell: "{{ mssql_temp_download_path }}\\SQLServer2017-SSEI-Dev.exe /Action=Download /MediaPath={{ mssql_installation_path }} /MediaType=CAB /Quiet"
-
-- name: Extract installation media
-  win_shell: "{{ mssql_installation_path }}\\SQLServer2017-DEV-x64-ENU.exe /X:{{ mssql_installation_path }}\\Media /Q"
-# If this step fails, logs are in C:\Program Files\Microsoft SQL Server\...\Setup Bootstrap\Log
-# it will often contain the actual error.  If it shows everything passing, the issue is within the DSC logs.
-# 
-# This module also typically throws this error fpr all failure conditions:
-# PowerShell DSC resource MSFT_SqlSetup  failed to execute Set-TargetResource functionality with error message: 
-# System.Exception: Test-TargetResource returned false after calling Set-TargetResource.
-#
-#
-# This document can also be useful to troubleshoot issues with DSC modules
-# https://docs.microsoft.com/en-us/powershell/dsc/troubleshooting 
-#
-# In particular completing these steps:
-# https://docs.microsoft.com/en-us/powershell/dsc/troubleshooting#gathering-events-from-a-single-dsc-operation
-# then re-running a failing PowershellDSC job can help you find the source of your error
+# Install SQL Server
 - name: Install SQL Server
   win_dsc:
     resource_name: SQLSetup
@@ -102,31 +68,17 @@ mssql_sysadmin_accounts:
     SQLCollation: "{{ mssql_collation }}"
     BrowserSvcStartupType: "{{ mssql_browsersvc_mode }}"
     SuppressReboot: "{{ mssql_suppress_reboot }}"
-    # Service Accounts
-    #
-    # If the type of the DSC resource option is a PSCredential then 
-    # there needs to be 2 options set in the Ansible task definition 
-    # suffixed with _username and _password. So we will be providing 
-    # two options for these normally single option items.
 
     # SQL Service Account
     SQLSvcAccount_username: "{{ mssql_sqlsvc_account }}"
     SQLSvcAccount_password: "{{ mssql_sqlsvc_account_pass }}"
+
     # SQL Agent Service Account
     AgtSvcAccount_username: "{{ mssql_agentsvc_account }}"
     AgtSvcAccount_password: "{{ mssql_agentsvc_account_pass }}"
-    # SQL Analysis Services Account
-    ASSvcAccount_username: "{{ mssql_assvc_account }}"
-    ASSvcAccount_password: "{{ mssql_assvc_account_pass }}"
-
-    # Used when installing on a network path, comment out 
-    # SourceCredential_username: "{{ ansible_user }}"
-    # SourceCredential_password: "{{ ansible_password }}"
 
     # System Admins 
     SQLSysAdminAccounts: "{{ mssql_sysadmin_accounts }}"
     # Analysis Services Admins (if installed)
     ASSysAdminAccounts: "{{ mssql_asadmin_accounts }}"
   tags: install_sql
-
-# End of win_dsc for SQL Server
