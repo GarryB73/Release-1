@@ -1,9 +1,6 @@
 # Path to download installation media to
 mssql_installation_path: c:\SQLInstall
 
-# Temporary path to store downloader
-mssql_temp_download_path: C:\tmp
-
 # instance details
 mssql_instance_name: Test
 mssql_drive: C
@@ -54,7 +51,7 @@ mssql_sysadmin_accounts:
     resource_name: SQLSetup
     Action: Install
     UpdateEnabled: True
-    SourcePath: "{{ mssql_installation_path }}\\Media"
+    SourcePath: "{{ mssql_installation_path }}"
     InstanceName: "{{ mssql_instance_name }}"
     InstallSharedDir: "{{ mssql_installshared_path }}"
     InstallSharedwowDir: "{{ mssql_installsharedwow_path }}"
