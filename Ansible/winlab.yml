@@ -1,13 +1,8 @@
 ---
-- hosts: sql
+- hosts: pdc
   roles:
-    - sql
-    #- common
-
-#- hosts: pdc
-#  roles:
-#    - pdc
-    #- pdc_userdata
+    - pdc
+    - pdc_userdata
     #- pdc_gpos
     #- common
 
