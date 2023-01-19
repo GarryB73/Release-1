@@ -47,7 +47,7 @@
     state: present
     include_sub_features: True
 
-- name: Install SQL Sever
+- name: Windows | Install SQL Sever
   vars_files:
     - environment_var.yml
   win_dsc:
