@@ -1,4 +1,4 @@
-- name: SQL | Install SQL Server
+- name: SQL Sever
   vars_files:
     - environment_var.yml
   win_dsc:

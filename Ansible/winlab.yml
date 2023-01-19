@@ -1,6 +1,6 @@
 ---
 # Configure the primary domain controller
-- hosts: sql
+- hosts: SQL Server
   roles:
     - sql
     #- pdc
