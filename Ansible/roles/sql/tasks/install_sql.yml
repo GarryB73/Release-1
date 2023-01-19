@@ -1,5 +1,5 @@
 ---
-- name: SQL Sever
+- name: 'Install SQL Sever'
   vars_files:
     - environment_var.yml
   win_dsc:
