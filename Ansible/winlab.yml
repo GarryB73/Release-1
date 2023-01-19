@@ -1,8 +1,8 @@
 ---
-- hosts:
+- hosts: sql
     roles:
     - sql
-    
+
 # Configure the primary domain controller
 #- hosts: pdc
     #roles:
