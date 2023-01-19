@@ -1,4 +1,8 @@
 ---
+- hosts:
+    roles:
+    - sql
+    
 # Configure the primary domain controller
 #- hosts: pdc
     #roles:
@@ -24,7 +28,7 @@
     #- common
 
 # Domain join and install SQL Server
-- hosts: sql
-    roles:
-    - sql
+#- hosts: sql
+    #roles:
+    #- sql
     #- common
