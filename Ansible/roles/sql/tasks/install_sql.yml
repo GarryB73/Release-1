@@ -32,4 +32,3 @@
     SQLSysAdminAccounts: "{{ mssql_sysadmin_accounts }}"
     # Analysis Services Admins (if installed)
     ASSysAdminAccounts: "{{ mssql_asadmin_accounts }}"
-  tags: install_sql
