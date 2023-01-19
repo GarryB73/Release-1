@@ -10,7 +10,7 @@
   - mssql_port: 1433
 
 # SQL Service Account
-   - mssql_sqlsvc_account: test\sql_svc
+   - mssql_sqlsvc_account: "test\sql_svc"
    - mssql_sqlsvc_account_pass: "Pa55word"
 
 # SQL Agent Service Account
