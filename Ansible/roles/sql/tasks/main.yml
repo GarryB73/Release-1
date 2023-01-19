@@ -1,5 +1,5 @@
 #- include: domain_join.yml
 #- include: Create_service_account.yml
 #- include: pre-reqs.yml
-- include: environment_var.yml
+#- include: environment_var.yml
 - include: install_sql.yml
