@@ -1,25 +1,26 @@
 # Path to installation media
-vars:
+- name: Set SQL environment variables
+  vars:
   - mssql_installation_path: C:\SQLInstall
-
-# Instance details
+  
+# Instance details  
   - mssql_instance_name: Test
   - mssql_drive: C
   - mssql_userdbvol_name: testdb
   - mssql_port: 1433
 
 # SQL Service Account
-  - mssql_sqlsvc_account: test\sql_svc
-  - mssql_sqlsvc_account_pass: "Pa55word"
+   - mssql_sqlsvc_account: test\sql_svc
+   - mssql_sqlsvc_account_pass: "Pa55word"
 
 # SQL Agent Service Account
-  - mssql_agentsvc_account: test\sql_agt
-  - mssql_agentsvc_account_pass: "Pa55word"
+   - mssql_agentsvc_account: test\sql_agt
+   - mssql_agentsvc_account_pass: "Pa55word"
 
 # Volume paths
   - mssql_userdbvol_path: "{{ mssql_drive }}:\\{{ mssql_userdbvol_name }}"
-  - mssql_db_accesspath: "{{ mssql_userdbvol_path }}\\DatabaseFiles"
-  - mssql_logs_accesspath: "{{ mssql_userdbvol_path }}\\DatabaseLogs"
+   - mssql_db_accesspath: "{{ mssql_userdbvol_path }}\\DatabaseFiles"
+   - mssql_logs_accesspath: "{{ mssql_userdbvol_path }}\\DatabaseLogs"
 
 # Shared files paths
   - mssql_installshared_path: C:\Program Files\Microsoft SQL Server
@@ -45,3 +46,4 @@ vars:
   -  mssql_sysadmin_accounts: 
       Test\Domain Admins
       Test\Administrator
+
