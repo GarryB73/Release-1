@@ -1,8 +1,8 @@
 ---
 # Configure the primary domain controller
 - hosts: pdc
-    roles:
-    - pdc
+  roles:
+   - pdc
     #- pdc_userdata
     #- pdc_gpos
 
@@ -13,17 +13,17 @@
 
 # Domain join and install Exchange server
 - hosts: exc
-    roles:
-    - exc
+  roles:
+   - exc
     #- common
 
 # Domain join and install sql server
 - hosts: sql
   roles:
-    - sql
+   - sql
 
 # Domain join and install Sharepoint Server
 - hosts: sp
-    roles:
-    - sp
+  roles:
+   - sp
     #- common
