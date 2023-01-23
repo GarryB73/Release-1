@@ -17,12 +17,13 @@
     - exc
     #- common
 
+# Domain join and install sql server
+- hosts: sql
+  roles:
+    - sql
+
 # Domain join and install Sharepoint Server
 - hosts: sp
     roles:
     - sp
     #- common
-
-- hosts: sql
-  roles:
-    - sql
