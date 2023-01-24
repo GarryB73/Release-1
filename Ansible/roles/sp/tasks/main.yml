@@ -3,7 +3,6 @@
   win_dns_client:
     adapter_names: '*'
     ipv4_addresses: 
-      - "192.168.1.254"
       - "{{ groups['pdc'][0] }}"
 
 - name: Change the hostname
