@@ -16,33 +16,35 @@
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "Staff"
-    path: "dc={{ netbios_domain }}, dc={{ top_level_domain }}"
+    path: "dc=test, dc=co, dc=uk"
+    Description: "Staff OU"
+    Ensure: present  
 - name: Create OU for Admin
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "Admins"
-    path: "dc={{ netbios_domain }}, dc={{ top_level_domain }}"
+    path: "dc=test, dc=co, dc=uk"
 # Create OU for Server locations
 - name: Create OU for Servers
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "Servers"
-    path: "dc={{ netbios_domain }}, dc={{ top_level_domain }}"
+    path: "dc=test, dc=co, dc=uk"
 - name: Create OU for Exchange Servers
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "Exchange"
-    path: "ou={{Servers}},dc={{ netbios_domain }}, dc={{ top_level_domain }}"
+    path: "ou=Servers,dc=test, dc=co, dc=uk"
 - name: Create OU for Sharepoint Servers
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "Sharepoint"
-    path: "ou={{Servers}},dc={{ netbios_domain }}, dc={{ top_level_domain }}"
+    path: "ou=Servers,dc=test, dc=co, dc=uk"
 - name: Create OU for SQL Servers
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "SQL"
-    path: "ou={{Servers}},dc={{ netbios_domain }}, dc={{ top_level_domain }}"  
+    path: "ou=Servers,dc=test, dc=co, dc=uk"  
 # Create multiple users for Domain and add to respective groups
 - name: Create administrator Account
   community.windows.win_domain_user:
@@ -51,7 +53,7 @@
     surname: Baker
     password: Pa55word
     state: present
-    path: "ou=Admins, dc={{ netbios_domain }}, dc={{ top_level_domain }}"
+    path: "ou=Admins, dc=test, dc=co, dc=uk"
     groups: 
     - Employees
     - Domain Users
@@ -67,7 +69,7 @@
     surname: Baker
     password: Pa55word
     state: present
-    path: "ou=Staff, dc={{ netbios_domain }}, dc={{ top_level_domain }}"
+    path: "ou=Staff, dc=test, dc=co, dc=uk"
     groups: 
     - Employees
     - Domain Users
