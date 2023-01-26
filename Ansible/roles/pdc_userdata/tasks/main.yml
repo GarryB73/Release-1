@@ -68,7 +68,138 @@
     surname: Service Account
     password: Pa55word
     state: present
-    path: "ou=Service Accounts, dc=test, dc=co, dc=uk"
+    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    groups: 
+    - Domain Users
+    domain_username: "{{ domain_admin_username }}"
+    domain_password: "{{ domain_admin_password }}"
+    domain_server: "{{ primary_domain_controller }}"
+- name: Create SharePoint Admin Account
+  community.windows.win_domain_user:
+    name: sp_admin
+    firstname: SharePoint Admin
+    surname: Service Account
+    password: Pa55word
+    state: present
+    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    groups: 
+    - Domain Users
+    domain_username: "{{ domain_admin_username }}"
+    domain_password: "{{ domain_admin_password }}"
+    domain_server: "{{ primary_domain_controller }}"
+- name: Create SharePoint Pool Account
+  community.windows.win_domain_user:
+    name: sp_pool
+    firstname: SharePoint Pool
+    surname: Service Account
+    password: Pa55word
+    state: present
+    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    groups: 
+    - Domain Users
+    domain_username: "{{ domain_admin_username }}"
+    domain_password: "{{ domain_admin_password }}"
+    domain_server: "{{ primary_domain_controller }}"
+- name: Create SharePoint Services Account
+  community.windows.win_domain_user:
+    name: sp_services
+    firstname: SharePoint Services
+    surname: Service Account
+    password: Pa55word
+    state: present
+    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    groups: 
+    - Domain Users
+    domain_username: "{{ domain_admin_username }}"
+    domain_password: "{{ domain_admin_password }}"
+    domain_server: "{{ primary_domain_controller }}"
+- name: Create SharePoint Crawl Account
+  community.windows.win_domain_user:
+    name: sp_crawl
+    firstname: SharePoint Crawl
+    surname: Service Account
+    password: Pa55word
+    state: present
+    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    groups: 
+    - Domain Users
+    domain_username: "{{ domain_admin_username }}"
+    domain_password: "{{ domain_admin_password }}"
+    domain_server: "{{ primary_domain_controller }}"
+- name: Create SharePoint search Account
+  community.windows.win_domain_user:
+    name: sp_search
+    firstname: SharePoint search
+    surname: Service Account
+    password: Pa55word
+    state: present
+    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    groups: 
+    - Domain Users
+    domain_username: "{{ domain_admin_username }}"
+    domain_password: "{{ domain_admin_password }}"
+    domain_server: "{{ primary_domain_controller }}"
+- name: Create SharePoint My Site Pool Account
+  community.windows.win_domain_user:
+    name: sp_mysitepool
+    firstname: SharePoint My Site Pool
+    surname: Service Account
+    password: Pa55word
+    state: present
+    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    groups: 
+    - Domain Users
+    domain_username: "{{ domain_admin_username }}"
+    domain_password: "{{ domain_admin_password }}"
+    domain_server: "{{ primary_domain_controller }}"
+- name: Create SharePoint User Profile Sync Account
+  community.windows.win_domain_user:
+    name: sp_userprofilesync
+    firstname: SharePoint User Profile Sync
+    surname: Service Account
+    password: Pa55word
+    state: present
+    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    groups: 
+    - Domain Users
+    #- Needs additional permissions
+    domain_username: "{{ domain_admin_username }}"
+    domain_password: "{{ domain_admin_password }}"
+    domain_server: "{{ primary_domain_controller }}"
+- name: Create SharePoint Workflow Manager Service Account
+  community.windows.win_domain_user:
+    name: wf_service
+    firstname: SharePoint Workflow Manager
+    surname: Service Account
+    password: Pa55word
+    state: present
+    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    groups: 
+    - Domain Users
+    domain_username: "{{ domain_admin_username }}"
+    domain_password: "{{ domain_admin_password }}"
+    domain_server: "{{ primary_domain_controller }}"
+- name: Create SharePoint Super User Account
+  community.windows.win_domain_user:
+    name: sp_portalsuperuser
+    firstname: SharePoint Portal Super User
+    surname: Service Account
+    password: Pa55word
+    state: present
+    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    groups: 
+    - Domain Users
+    domain_username: "{{ domain_admin_username }}"
+    domain_password: "{{ domain_admin_password }}"
+    domain_server: "{{ primary_domain_controller }}"
+- name: Create SharePoint Super Reader Account
+  community.windows.win_domain_user:
+    name: sp_portalsuperreader
+    firstname: SharePoint Portal Super Reader
+    surname: Service Account
+    password: Pa55word
+    state: present
+    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
     groups: 
     - Domain Users
     domain_username: "{{ domain_admin_username }}"
