@@ -6,8 +6,6 @@
     description: Employee Group
     state: present
 # Create OU for User locations
-#- name: Install nuget packge for OU creation
-#  ansible.windows.win_shell: install-packageprovider -name nuget -force
 - name: Install XactiveDirectory package for OU creation
   win_psmodule:
     name: ActiveDirectoryDSC
@@ -18,33 +16,64 @@
     name: "Staff"
     path: "dc=test, dc=co, dc=uk"
     Description: "Staff OU"
-    Ensure: present  
+    Ensure: present
 - name: Create OU for Admin
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "Admins"
     path: "dc=test, dc=co, dc=uk"
+    Description: "Administrator OU"
+    Ensure: present
+- name: Create OU for Service Accounts
+  win_dsc:
+    resource_name: ADOrganizationalUnit
+    name: "Service Account"
+    path: "dc=test, dc=co, dc=uk"
+    Description: "Service Accounts OU"
+    Ensure: present
 # Create OU for Server locations
 - name: Create OU for Servers
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "Servers"
     path: "dc=test, dc=co, dc=uk"
+    Description: "Servers OU"
+    Ensure: present  
 - name: Create OU for Exchange Servers
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "Exchange"
     path: "ou=Servers,dc=test, dc=co, dc=uk"
+    Description: "Exchange Servers OU"
+    Ensure: present
 - name: Create OU for Sharepoint Servers
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "Sharepoint"
     path: "ou=Servers,dc=test, dc=co, dc=uk"
+    Description: "SharePoint OU"
+    Ensure: present
 - name: Create OU for SQL Servers
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "SQL"
-    path: "ou=Servers,dc=test, dc=co, dc=uk"  
+    path: "ou=Servers,dc=test, dc=co, dc=uk"
+    Description: "Microsoft SQL Servers OU"
+    Ensure: present
+# Create Service Accounts
+- name: Create SharePoint Farm Account
+  community.windows.win_domain_user:
+    name: sp_farm
+    firstname: SharePoint Farm
+    surname: Service Account
+    password: Pa55word
+    state: present
+    path: "ou=Service Accounts, dc=test, dc=co, dc=uk"
+    groups: 
+    - Domain Users
+    domain_username: "{{ domain_admin_username }}"
+    domain_password: "{{ domain_admin_password }}"
+    domain_server: "{{ primary_domain_controller }}"
 # Create multiple users for Domain and add to respective groups
 - name: Create administrator Account
   community.windows.win_domain_user:
