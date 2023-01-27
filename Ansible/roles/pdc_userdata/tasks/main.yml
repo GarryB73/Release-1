@@ -94,10 +94,11 @@
 # Create Service Accounts
 - name: Create SharePoint Farm Account
   community.windows.win_domain_user:
-    name: sp-farm
+    name: sp_farm
     firstname: SharePoint Farm
     surname: Service Account
     password: Pa55word
+    Description: SharePoint Farm Service Account
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
