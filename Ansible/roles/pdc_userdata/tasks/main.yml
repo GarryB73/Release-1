@@ -14,21 +14,21 @@
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "Staff"
-    path: "dc=test, dc=co, dc=uk"
+    path: "dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     Description: "Staff OU"
     Ensure: present
 - name: Create OU for Admin
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "Admins"
-    path: "dc=test, dc=co, dc=uk"
+    path: "dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     Description: "Administrator OU"
     Ensure: present
 - name: Create OU for Service Accounts
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "Service Accounts"
-    path: "dc=test, dc=co, dc=uk"
+    path: "dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     Description: "Service Accounts OU"
     Ensure: present
 # Create OU for Server locations
@@ -36,28 +36,28 @@
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "Servers"
-    path: "dc=test, dc=co, dc=uk"
+    path: "dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     Description: "Servers OU"
     Ensure: present  
 - name: Create OU for Exchange Servers
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "Exchange"
-    path: "ou=Servers,dc=test, dc=co, dc=uk"
+    path: "ou={{ Member_Servers }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     Description: "Exchange Servers OU"
     Ensure: present
 - name: Create OU for Sharepoint Servers
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "Sharepoint"
-    path: "ou=Servers,dc=test, dc=co, dc=uk"
+    path: "ou={{ Member_Servers }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     Description: "SharePoint OU"
     Ensure: present
 - name: Create OU for SQL Servers
   win_dsc:
     resource_name: ADOrganizationalUnit
     name: "SQL"
-    path: "ou=Servers,dc=test, dc=co, dc=uk"
+    path: "ou={{ Member_Servers }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     Description: "Microsoft SQL Servers OU"
     Ensure: present
 # Create multiple users for Domain and add to respective groups
@@ -68,7 +68,7 @@
     surname: Baker
     password: Pa55word
     Ensure: present
-    path: "ou=Admins, dc=test, dc=co, dc=uk"
+    path: "ou={{ Administrator }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
     - Employees
     - Domain Users
@@ -84,7 +84,7 @@
     surname: Baker
     password: Pa55word
     Ensure: present
-    path: "ou=Staff, dc=test, dc=co, dc=uk"
+    path: "ou={{ Users }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
     - Employees
     - Domain Users
@@ -112,7 +112,7 @@
     surname: Service Account
     password: Pa55word
     state: present
-    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
     - Domain Users
     domain_username: "{{ domain_admin_username }}"
@@ -125,7 +125,7 @@
     surname: Service Account
     password: Pa55word
     state: present
-    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
     - Domain Users
     domain_username: "{{ domain_admin_username }}"
@@ -138,7 +138,7 @@
     surname: Service Account
     password: Pa55word
     state: present
-    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
     - Domain Users
     domain_username: "{{ domain_admin_username }}"
@@ -151,7 +151,7 @@
     surname: Service Account
     password: Pa55word
     state: present
-    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
     - Domain Users
     domain_username: "{{ domain_admin_username }}"
@@ -164,7 +164,7 @@
     surname: Service Account
     password: Pa55word
     state: present
-    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
     - Domain Users
     domain_username: "{{ domain_admin_username }}"
@@ -177,7 +177,7 @@
     surname: Service Account
     password: Pa55word
     state: present
-    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
     - Domain Users
     domain_username: "{{ domain_admin_username }}"
@@ -190,7 +190,7 @@
     surname: Service Account
     password: Pa55word
     state: present
-    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
     - Domain Users
     #- Needs additional permissions
@@ -204,7 +204,7 @@
     surname: Service Account
     password: Pa55word
     state: present
-    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
     - Domain Users
     domain_username: "{{ domain_admin_username }}"
@@ -217,7 +217,7 @@
     surname: Service Account
     password: Pa55word
     state: present
-    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
     - Domain Users
     domain_username: "{{ domain_admin_username }}"
@@ -230,7 +230,7 @@
     surname: Service Account
     password: Pa55word
     state: present
-    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
     - Domain Users
     domain_username: "{{ domain_admin_username }}"
