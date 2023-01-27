@@ -99,7 +99,7 @@
     surname: Service Account
     password: Pa55word
     state: present
-     path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
     groups: 
     - Domain Users
     domain_username: "{{ domain_admin_username }}"
