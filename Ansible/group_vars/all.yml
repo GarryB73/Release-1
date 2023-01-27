@@ -7,6 +7,8 @@ ansible_winrm_server_cert_validation: ignore
 
 domain: "test.co.uk"
 netbios_domain: "test"
+middle_level_domain: "co"
+end_level_domain: "uk"
 top_level_domain: "co.uk" 
 domain_admin: "{{ ansible_user }}@{{ domain }}"
 domain_admin_username: "{{ ansible_user }}"
@@ -23,53 +25,9 @@ fqdn_exc_server: "{{ exchange_server }}.{{ domain }}"
 fqdn_sql_server: "{{ sql_server }}.{{ domain }}"
 fqdn_sp_server: "{{ sp_server }}.{{ domain }}"
 
-# Path to installation media
-mssql_installation_path: C:\SQLInstall
+# AD OU Settings
+Service_Accounts: "Service Accounts"
 
-# Instance details
-mssql_instance_name: Test
-mssql_drive: C
-mssql_userdbvol_name: testdb
-mssql_port: 1433
-
-# SQL Service Account
-mssql_sqlsvc_account: test\sql_svc
-mssql_sqlsvc_account_pass: "Pa55word"
-
-# SQL Agent Service Account
-mssql_agentsvc_account: test\sql_agt
-mssql_agentsvc_account_pass: "Pa55word"
-
-# Volume paths
-mssql_userdbvol_path: "{{ mssql_drive }}:\\{{ mssql_userdbvol_name }}"
-mssql_db_accesspath: "{{ mssql_userdbvol_path }}\\DatabaseFiles"
-mssql_logs_accesspath: "{{ mssql_userdbvol_path }}\\DatabaseLogs"
-
-# Shared files paths
-mssql_installshared_path: C:\Program Files\Microsoft SQL Server
-mssql_installsharedwow_path: C:\Program Files (x86)\Microsoft SQL Server
-
-# Instance path
-mssql_instance_path: "C:\\Program Files\\Microsoft SQL Server\\{{ mssql_instance_name }}"
-
-# SQL DB and Logging Paths
-mssql_sqlinstalldata_path: "{{ mssql_db_accesspath }}\\{{mssql_instance_name }}"
-mssql_sqluserdata_path: "{{ mssql_db_accesspath }}\\{{mssql_instance_name }}"
-mssql_sqluserlog_path: "{{ mssql_logs_accesspath }}\\{{mssql_instance_name }}"
-mssql_sqltempDB_path: "C:\\TempDBFiles\\Data\\{{mssql_instance_name }}"
-mssql_sqltempDBlog_path: "C:\\TempDBFiles\\Log\\{{mssql_instance_name }}"
-
-# security mode - SQL indicates mixed-mode auth, while Windows indicates Windows Auth.
-mssql_security_mode: sql
-
-# SA user password
-mssql_sa_password: "Pa55word"
-
-# Ansible_Admin must be included so that the playbook can make configuration changes post install
-mssql_sysadmin_accounts: 
-  - Test\Domain Admins
-  - Test\Administrator
-  
 #dhcp_scope_name: "DHCPScope"
 #dhcp_scope_start: "10.175.128.185"
 #dhcp_scope_end: "10.175.128.190"
