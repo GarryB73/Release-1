@@ -67,7 +67,7 @@
     firstname: Garry
     surname: Baker
     password: Pa55word
-    state: present
+    Ensure: present
     path: "ou=Admins, dc=test, dc=co, dc=uk"
     groups: 
     - Employees
@@ -83,7 +83,7 @@
     firstname: Garry
     surname: Baker
     password: Pa55word
-    state: present
+    Ensure: present
     path: "ou=Staff, dc=test, dc=co, dc=uk"
     groups: 
     - Employees
@@ -92,32 +92,19 @@
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
 # Create Service Accounts
-- name: Create administrator Account
+- name: Create SharePoint Farm Account
   community.windows.win_domain_user:
-    name: sp_farm
+    name: sp-farm
     firstname: SharePoint Farm
     surname: Service Account
     password: Pa55word
     state: present
-    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
+     path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
     groups: 
     - Domain Users
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
-#- name: Create SharePoint Farm Account
-#  community.windows.win_domain_user:
-#    name: sp_farm
-#    firstname: SharePoint Farm
-#    surname: Service Account
-#    password: Pa55word
-#    state: present
-#    path: "ou='Service Accounts', dc=test, dc=co, dc=uk"
-#    groups: 
-#    - Domain Users
-#    domain_username: "{{ domain_admin_username }}"
-#    domain_password: "{{ domain_admin_password }}"
-#    domain_server: "{{ primary_domain_controller }}"
 - name: Create SharePoint Admin Account
   community.windows.win_domain_user:
     name: sp_admin
