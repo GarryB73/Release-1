@@ -123,6 +123,7 @@
     surname: Service Account
     password: Pa55word
     Description: SharePoint Farm Service Account
+    PasswordNeverExpires: True
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -138,6 +139,7 @@
     surname: Service Account
     password: Pa55word
     Description: SharePoint Admin Service Account
+    PasswordNeverExpires: True
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -155,6 +157,7 @@
     surname: Service Account
     password: Pa55word
     Description: SharePoint Pool Service Account
+    PasswordNeverExpires: True
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -169,6 +172,7 @@
     surname: Service Account
     password: Pa55word
     Description: SharePoint Services Account
+    PasswordNeverExpires: True
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -183,6 +187,7 @@
     surname: Service Account
     password: Pa55word
     Description: SharePoint Crawl Service Account
+    PasswordNeverExpires: True
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -197,6 +202,7 @@
     surname: Service Account
     password: Pa55word
     Description: SharePoint search Service Account
+    PasswordNeverExpires: True
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -212,6 +218,7 @@
     surname: Service Account
     password: Pa55word
     Description: SharePoint MySitePool Service Account
+    PasswordNeverExpires: True
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -226,6 +233,7 @@
     surname: Service Account
     password: Pa55word
     Description: SharePoint User Profile Sync Service Account
+    PasswordNeverExpires: True
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -241,6 +249,7 @@
     surname: Service Account
     password: Pa55word
     Description: SharePoint Workflow Manager Service Account
+    PasswordNeverExpires: True
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -256,6 +265,7 @@
     surname: Service Account
     password: Pa55word
     Description: SharePoint Portal Super User
+    PasswordNeverExpires: True
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -270,6 +280,7 @@
     surname: Service Account
     password: Pa55word
     Description: SharePoint Super Reader
+    PasswordNeverExpires: True
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
