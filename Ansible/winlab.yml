@@ -3,7 +3,7 @@
 - hosts: pdc
   roles:
    #- pdc
-   - pdc_userdata
+   #- pdc_userdata
    - pdc_gpos
 
 # Configure the secondary domain controller
