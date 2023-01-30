@@ -1,10 +1,31 @@
 ---
-# Create Groups for Domain
-- name: Create user group
+# Domain Group Creation
+# Create Employees Group
+- name: Create Employees Group
   ansible.windows.win_group:
     name: Employees
     description: Employee Group
     state: present
+# Create SQL Server SysAdmin
+- name: Create SQL SysAdmin Group
+  ansible.windows.win_group:
+    name: SysAdmin
+    description: SQL Server SysAdmin
+    state: present
+# Create SQL DB_Creator
+- name: Create SQL DB_Creator Group
+  ansible.windows.win_group:
+    name: DB_Creator
+    description: SQL Server DB_Creator
+    state: present
+# Create SQL SecurityAdmin 
+- name: Create SQL SecurityAdmin Group
+  ansible.windows.win_group:
+    name: SecurityAdmin
+    description: SQL Server SecurityAdmin
+    state: present
+
+# Domain OU Creation
 # Create OU for User locations
 - name: Install XactiveDirectory package for OU creation
   win_psmodule:
@@ -60,6 +81,8 @@
     path: "ou={{ Member_Servers }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     Description: "Microsoft SQL Servers OU"
     Ensure: present
+
+# Domain User and Service Account Creation
 # Create multiple users for Domain and add to respective groups
 - name: Create administrator Account
   community.windows.win_domain_user:
@@ -91,7 +114,8 @@
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
-# Create Service Accounts
+
+# Create SQL Server Farm Service Accounts
 - name: Create SharePoint Farm Account
   community.windows.win_domain_user:
     name: sp_farm
@@ -103,6 +127,7 @@
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
     - Domain Users
+    - DB_Creator
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
@@ -117,6 +142,9 @@
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
     - Domain Users
+    - SysAdmin
+    - SecurityAdmin
+    - DB_Creator
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
@@ -173,6 +201,7 @@
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
     - Domain Users
+    - SysAdmin
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
@@ -216,6 +245,7 @@
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
     - Domain Users
+    - SysAdmin
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
