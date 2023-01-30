@@ -4,7 +4,7 @@
   roles:
    #- pdc
    - pdc_userdata
-    #- pdc_gpos
+   - pdc_gpos
 
 # Configure the secondary domain controller
 #- hosts: rdc

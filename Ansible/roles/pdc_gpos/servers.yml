@@ -9,6 +9,6 @@
    - name: "Create GPO"
      win_dsc:
         resource_name: GroupPolicy
-        name: "Servers"
+        name: "SQL Servers"
         status: allsettingsenabled
         ensure: present

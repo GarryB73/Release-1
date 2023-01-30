@@ -8,7 +8,7 @@ $Database = "SharePoint"
 Add-SqlLogin -ServerInstance $Server -Credential $Credential -LoginName $Domain"\SysAdmin" -LoginType "WindowsGroup" -DefaultDatabase $Database
 
 # Add SecurityAdmin group to SQL Users
-Add-SqlLogin -ServerInstance $Server -Credential $Credential -LoginName $Domain"\SecurityAdmin" -Login "WindowsGroup" -DefaultDatabase $Database
+Add-SqlLogin -ServerInstance $Server -Credential $Credential -LoginName $Domain"\SecurityAdmin" -LoginType "WindowsGroup" -DefaultDatabase $Database
 
 # Add DB_Creator group to SQL Users
 Add-SqlLogin -ServerInstance $Server -Credential $Credential -LoginName $Domain"\DB_Creator" -LoginType "WindowsGroup" -DefaultDatabase $Database
