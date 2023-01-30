@@ -112,6 +112,7 @@
     firstname: SharePoint Admin
     surname: Service Account
     password: Pa55word
+    Description: SharePoint Admin Service Account
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -125,6 +126,7 @@
     firstname: SharePoint Pool
     surname: Service Account
     password: Pa55word
+    Description: SharePoint Pool Service Account
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -138,6 +140,7 @@
     firstname: SharePoint Services
     surname: Service Account
     password: Pa55word
+    Description: SharePoint Services Account
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -151,6 +154,7 @@
     firstname: SharePoint Crawl
     surname: Service Account
     password: Pa55word
+    Description: SharePoint Crawl Service Account
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -158,12 +162,13 @@
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
-- name: Create SharePoint search Account
+- name: Create SharePoint Search Account
   community.windows.win_domain_user:
     name: sp_search
     firstname: SharePoint search
     surname: Service Account
     password: Pa55word
+    Description: SharePoint search Service Account
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -177,6 +182,7 @@
     firstname: SharePoint My Site Pool
     surname: Service Account
     password: Pa55word
+    Description: SharePoint MySitePool Service Account
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -190,6 +196,7 @@
     firstname: SharePoint User Profile Sync
     surname: Service Account
     password: Pa55word
+    Description: SharePoint User Profile Sync Service Account
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -204,6 +211,7 @@
     firstname: SharePoint Workflow Manager
     surname: Service Account
     password: Pa55word
+    Description: SharePoint Workflow Manager Service Account
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -217,6 +225,7 @@
     firstname: SharePoint Portal Super User
     surname: Service Account
     password: Pa55word
+    Description: SharePoint Portal Super User
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
@@ -230,6 +239,7 @@
     firstname: SharePoint Portal Super Reader
     surname: Service Account
     password: Pa55word
+    Description: SharePoint Super Reader
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 
