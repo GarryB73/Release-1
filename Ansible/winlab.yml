@@ -12,10 +12,12 @@
    - exc
 
 # Domain join and install sql server
-- hosts: sp
+- hosts: sp001
   roles:
-   - sp
-
+   - sp001
+- hosts: sp002
+  roles:
+   - sp002
 # Domain join and install Sharepoint Server
 - hosts: sql
   roles:
