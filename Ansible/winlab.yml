@@ -6,11 +6,6 @@
    - pdc_userdata
    #- pdc_gpos
 
-# Configure the secondary domain controller
-#- hosts: rdc
-    #roles:
-    #- rdc
-
 # Domain join and install Exchange server
 - hosts: exc
   roles:
