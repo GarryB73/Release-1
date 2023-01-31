@@ -2,9 +2,9 @@
 # Configure the primary domain controller
 - hosts: pdc
   roles:
-   #- pdc
-   #- pdc_userdata
-   - pdc_gpos
+   - pdc
+   - pdc_userdata
+   #- pdc_gpos
 
 # Configure the secondary domain controller
 #- hosts: rdc
@@ -12,18 +12,16 @@
     #- rdc
 
 # Domain join and install Exchange server
-#- hosts: exc
-#  roles:
-#   - exc
-    #- common
+- hosts: exc
+  roles:
+   - exc
 
 # Domain join and install sql server
-#- hosts: sp
-#  roles:
-#   - sp
+- hosts: sp
+  roles:
+   - sp
 
 # Domain join and install Sharepoint Server
-#- hosts: sql
-#  roles:
-#   - sql
-    #- common
+- hosts: sql
+  roles:
+   - sql

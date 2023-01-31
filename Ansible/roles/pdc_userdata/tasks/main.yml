@@ -1,10 +1,19 @@
 ---
 # Domain Group Creation
+#
+# Should these be Domain Local or Domain Global Groups?
+#
 # Create Employees Group
 - name: Create Employees Group
   ansible.windows.win_group:
     name: Employees
     description: Employee Group
+    state: present
+# Create SQL Server Local Administrator
+- name: Create SQL Local Administrator Group
+  ansible.windows.win_group:
+    name: SQL_LocalAdmin
+    description: SQL Server Local Administrator
     state: present
 # Create SQL Server SysAdmin
 - name: Create SQL SysAdmin Group
@@ -147,6 +156,7 @@
     - SysAdmin
     - SecurityAdmin
     - DB_Creator
+    - SQL_LocalAdmin
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
@@ -208,6 +218,7 @@
     groups: 
     - Domain Users
     - SysAdmin
+    - SQL_LocalAdmin
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
@@ -255,6 +266,7 @@
     groups: 
     - Domain Users
     - SysAdmin
+    - SQL_LocalAdmin
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
