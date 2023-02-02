@@ -7,17 +7,15 @@
    #- pdc_gpos
 
 # Domain join and install Exchange server
-- hosts: exc
-  roles:
-   - exc
+#- hosts: exc
+#  roles:
+#   - exc
 
 # Domain join and install sql server
-- hosts: sp001
+- hosts: sp
   roles:
-   - sp001
-- hosts: sp002
-  roles:
-   - sp002
+   - sp
+
 # Domain join and install Sharepoint Server
 - hosts: sql
   roles:

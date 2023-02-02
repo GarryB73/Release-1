@@ -7,7 +7,7 @@
 
 - name: Change the hostname
   ansible.windows.win_hostname:
-    name: "{{ sp_server1 }}"
+    name: "{{ sp_server }}"
   register: res
 
 - name: Reboot

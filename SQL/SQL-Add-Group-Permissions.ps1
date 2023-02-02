@@ -4,6 +4,9 @@ $Domain = "Test"
 $Credential = "sa"
 $Database = "SharePoint"
 
+# Install SqlServer Module
+Install-Module -Name SqlServer -AllowClobber
+
 # Add SysAdmin group to SQL Users
 Add-SqlLogin -ServerInstance $Server -Credential $Credential -LoginName $Domain"\SysAdmin" -LoginType "WindowsGroup" -DefaultDatabase $Database
 
