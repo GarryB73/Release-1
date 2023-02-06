@@ -9,4 +9,4 @@
 - include: pre_reqs.yml
 
 # Install SQL server
-- include: Install_sql.yml
+- include: install_sql.yml
