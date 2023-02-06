@@ -2,7 +2,7 @@
 - name: Install SQL Sever and start services
   vars_files:
     - environment_var.yml
-  win_dsc:
+  ansible.windows.win_dsc:
     resource_name: SQLSetup
     Action: Install
     UpdateEnabled: True

@@ -292,7 +292,8 @@
     surname: Service Account
     password: Pa55word
     Description: SharePoint Super Reader
-    PasswordNeverExpires: True
+    password_never_expires: yes
+    user_cannot_change_password: yes
     state: present
     path: "ou={{ Service_Accounts }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     groups: 

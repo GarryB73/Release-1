@@ -1,0 +1,12 @@
+---
+# Joing server to the domain
+- include: domain_joined.yml
+
+# Enable RDP services
+- include: enable_rdp.yml
+
+# Install SQL pre-requisit software
+- include: pre-reqs.yml
+
+# Install SQL server
+- include: Install_sql.yml
