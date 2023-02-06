@@ -9,24 +9,28 @@
     name: Employees
     description: Employee Group
     state: present
+
 # Create SQL Server Local Administrator
 - name: Create SQL Local Administrator Group
   ansible.windows.win_group:
     name: SQL_LocalAdmin
     description: SQL Server Local Administrator
     state: present
+
 # Create SQL Server SysAdmin
 - name: Create SQL SysAdmin Group
   ansible.windows.win_group:
     name: SysAdmin
     description: SQL Server SysAdmin
     state: present
+
 # Create SQL DB_Creator
 - name: Create SQL DB_Creator Group
   ansible.windows.win_group:
     name: DB_Creator
     description: SQL Server DB_Creator
     state: present
+
 # Create SQL SecurityAdmin 
 - name: Create SQL SecurityAdmin Group
   ansible.windows.win_group:
@@ -40,6 +44,7 @@
   win_psmodule:
     name: ActiveDirectoryDSC
     state: present
+
 - name: Create OU for Staff
   win_dsc:
     resource_name: ADOrganizationalUnit
@@ -47,6 +52,7 @@
     path: "dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     Description: "Staff OU"
     Ensure: present
+
 - name: Create OU for Admin
   win_dsc:
     resource_name: ADOrganizationalUnit
@@ -54,6 +60,7 @@
     path: "dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     Description: "Administrator OU"
     Ensure: present
+
 - name: Create OU for Service Accounts
   win_dsc:
     resource_name: ADOrganizationalUnit
@@ -61,6 +68,7 @@
     path: "dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     Description: "Service Accounts OU"
     Ensure: present
+
 # Create OU for Server locations
 - name: Create OU for Servers
   win_dsc:
@@ -68,7 +76,8 @@
     name: "Servers"
     path: "dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     Description: "Servers OU"
-    Ensure: present  
+    Ensure: present
+
 - name: Create OU for Exchange Servers
   win_dsc:
     resource_name: ADOrganizationalUnit
@@ -76,6 +85,7 @@
     path: "ou={{ Member_Servers }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     Description: "Exchange Servers OU"
     Ensure: present
+
 - name: Create OU for Sharepoint Servers
   win_dsc:
     resource_name: ADOrganizationalUnit
@@ -83,6 +93,7 @@
     path: "ou={{ Member_Servers }}, dc={{ netbios_domain }}, dc={{ middle_level_domain }}, dc={{ end_level_domain }}"
     Description: "SharePoint OU"
     Ensure: present
+
 - name: Create OU for SQL Servers
   win_dsc:
     resource_name: ADOrganizationalUnit
@@ -109,6 +120,7 @@
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
+
 - name: Create Employee account
   community.windows.win_domain_user:
     name: bakerg
@@ -141,6 +153,7 @@
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
+
 - name: Create SharePoint Admin Account
   community.windows.win_domain_user:
     name: sp_admin
@@ -160,6 +173,7 @@
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
+
 - name: Create SharePoint Pool Account
   community.windows.win_domain_user:
     name: sp_pool
@@ -175,6 +189,7 @@
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
+
 - name: Create SharePoint Services Account
   community.windows.win_domain_user:
     name: sp_services
@@ -190,6 +205,7 @@
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
+
 - name: Create SharePoint Crawl Account
   community.windows.win_domain_user:
     name: sp_crawl
@@ -205,6 +221,7 @@
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
+
 - name: Create SharePoint Search Account
   community.windows.win_domain_user:
     name: sp_search
@@ -222,6 +239,7 @@
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
+
 - name: Create SharePoint My Site Pool Account
   community.windows.win_domain_user:
     name: sp_mysitepool
@@ -237,6 +255,7 @@
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
+
 - name: Create SharePoint User Profile Sync Account
   community.windows.win_domain_user:
     name: sp_userprofilesync
@@ -253,6 +272,7 @@
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
+
 - name: Create SharePoint Workflow Manager Service Account
   community.windows.win_domain_user:
     name: wf_service
@@ -270,6 +290,7 @@
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
+
 - name: Create SharePoint Super User Account
   community.windows.win_domain_user:
     name: sp_portalsuperuser
@@ -285,6 +306,7 @@
     domain_username: "{{ domain_admin_username }}"
     domain_password: "{{ domain_admin_password }}"
     domain_server: "{{ primary_domain_controller }}"
+
 - name: Create SharePoint Super Reader Account
   community.windows.win_domain_user:
     name: sp_portalsuperreader

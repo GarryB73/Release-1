@@ -4,13 +4,12 @@ PDC ansible_host=192.168.1.201
 
 # Microsoft SQL Server
 [SQL]
-#SQL1 ansible_host=192.168.1.202
-SQL2 ansible_host=192.168.1.211
+SQL1 ansible_host=192.168.1.202
 
 # Microsoft Sharepoint Server
 [Sharepoint]
-Sharepoint ansible_host=192.168.1.203
+SP1 ansible_host=192.168.1.203
 
 # Microsoft Exchange Server
 [Exchange-Server]
-Exchange ansible_host=192.168.1.204
+EXC1 ansible_host=192.168.1.204

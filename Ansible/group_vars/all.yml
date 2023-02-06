@@ -1,10 +1,12 @@
 ---
+# Ansible connection settings
 ansible_user: administrator
 ansible_password: "Pa55word"
 ansible_port: 5985
 ansible_connection: winrm
 ansible_winrm_server_cert_validation: ignore
 
+# Domain Settings
 domain: "test.co.uk"
 netbios_domain: "test"
 middle_level_domain: "co"
@@ -14,26 +16,20 @@ domain_admin_username: "{{ ansible_user }}"
 domain_admin_password: "Pa55word"
 domain_safemode_password: "Pa55word"
 
+# Computer names
 primary_domain_controller: "testdc001"
 exchange_server: "testexc001"
 sql_server: "testsql001"
 sp_server: "testsp001"
-#sp_server2: "testsp002"
 
+# FQDN Settings
 fqdn_primary_domain_controller: "{{ primary_domain_controller }}.{{ domain }}"
 fqdn_exc_server: "{{ exchange_server }}.{{ domain }}"
 fqdn_sql_server: "{{ sql_server }}.{{ domain }}"
 fqdn_sp_server1: "{{ sp_server }}.{{ domain }}"
-#fqdn_sp_server2: "{{ sp_server2 }}+{{ domain }}"
 
 # AD OU Settings
 Service_Accounts: "Service Accounts"
 Administrator: "Admins"
 Users: "Staff"
 Member_Servers: "Servers"
-
-#dhcp_scope_name: "DHCPScope"
-#dhcp_scope_start: "10.175.128.185"
-#dhcp_scope_end: "10.175.128.190"
-#dhcp_scope_submask: "255.255.255.192"
-#dhcp_scope_router: "10.175.128.185"
