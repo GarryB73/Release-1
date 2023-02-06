@@ -3,11 +3,13 @@
 - hosts: SQL
   roles:
    - SQL
+   - common
 
 # Configure the primary domain controller
 #- hosts: pdc
 #  roles:
 #   - pdc
+#   - common
 #   - pdc_userdata
 #   - pdc_gpos
 
@@ -15,8 +17,10 @@
 #- hosts: Exchange
 #  roles:
 #   - Exchange
+#   - common
 
 # Domain join and install Sharepoint Server
 #- hosts: Sharepoint
 #  roles:
 #   - Sharepoint
+#   - common

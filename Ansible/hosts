@@ -1,0 +1,16 @@
+# Microsoft Primary Domain Controller
+[Domain-Controllers]
+PDC ansible_host=192.168.1.201
+
+# Microsoft SQL Server
+[SQL-Server]
+SQL1 ansible_host=192.168.1.202
+SQL2 ansible_host=192.168.1.211
+
+# Microsoft Sharepoint Server
+[Sharepoint]
+Sharepoint ansible_host=192.168.1.203
+
+# Microsoft Exchange Server
+[Exchange-Server]
+Exchange ansible_host=192.168.1.204
