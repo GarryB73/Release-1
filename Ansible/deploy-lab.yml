@@ -1,10 +1,10 @@
 ---
 # Configure the primary domain controller
-- hosts: pdc
-  roles:
-   - pdc
-   - common
-   - pdc_userdata
+#- hosts: pdc
+#  roles:
+#   - pdc
+#   - common
+#   - pdc_userdata
 #   - pdc_gpos
 
 # Domain join and install sql server
