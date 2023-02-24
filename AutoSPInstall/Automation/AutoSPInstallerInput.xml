@@ -1,17 +1,17 @@
-<Configuration Environment="Dev" Version="3.99.70">
+<Configuration Environment="shpt" Version="3.99.70">
     <Install SPVersion="2019">
         <ConfigFile>config-AutoSPInstaller.xml</ConfigFile>
         <InstallDir></InstallDir>
         <DataDir></DataDir>
         <PIDKey>F2DPD-HPNPV-WHKMK-G7C38-2G22J</PIDKey>
         <SKU>Standard</SKU>
-        <OfflineInstall>true</OfflineInstall>
+        <OfflineInstall>false</OfflineInstall>
         <PauseAfterInstall>false</PauseAfterInstall>
         <RemoteInstall Enable="true">
             <ParallelInstall>false</ParallelInstall>
         </RemoteInstall>
-        <AutoAdminLogon Enable="true">
-            <Password>Pa55word</Password>
+        <AutoAdminLogon Enable="false">
+            <Password></Password>
         </AutoAdminLogon>
         <Disable>
             <LoopbackCheck>true</LoopbackCheck>
@@ -21,7 +21,7 @@
         </Disable>
     </Install>
     <Farm>
-        <Passphrase>JoinTh3Farm</Passphrase>
+        <Passphrase>Th3c0wjumped0verthem00n</Passphrase>
         <Account>
             <AddToLocalAdminsDuringSetup>true</AddToLocalAdminsDuringSetup>
             <LeaveInLocalAdmins>false</LeaveInLocalAdmins>
@@ -43,19 +43,19 @@
                 <DBInstance>testsql001\SharePoint</DBInstance>
                 <DBPort>1433</DBPort>
             </DBAlias>
-            <DBPrefix>SharePoint</DBPrefix>
+            <DBPrefix>AutoSPInstaller</DBPrefix>
             <ConfigDB>Config</ConfigDB>
         </Database>
         <Services>
             <SandboxedCodeService Start="false"/>
             <ClaimsToWindowsTokenService Start="false" UpdateAccount="false"/>
-            <SMTP Install="false"/>
+            <SMTP Install="localhost"/>
             <OutgoingEmail Configure="false">
                 <SMTPServer></SMTPServer>
                 <EmailAddress></EmailAddress>
                 <ReplyToEmail></ReplyToEmail>
             </OutgoingEmail>
-            <IncomingEmail Start="false"/>
+            <IncomingEmail Start="localhost"/>
             <DistributedCache Start="localhost"/>
             <WorkflowTimer Start="localhost"/>
             <FoundationWebApplication Start="localhost"/>
@@ -72,7 +72,7 @@
         </ServerRoles>
         <ManagedAccounts>
             <ManagedAccount CommonName="spservice">
-                <Username>Test\sp_services</Username>
+                <Username>Test\SP_Services</Username>
                 <Password>Pa55word</Password>
             </ManagedAccount>
             <ManagedAccount CommonName="Portal">
@@ -110,10 +110,10 @@
         </Logging>
     </Farm>
     <WebApplications AddURLsToHOSTS="true">
-        <WebApplication Name="Portal Home">
+        <WebApplication Name="Sharepoint Home">
             <Type>Portal</Type>
-            <ApplicationPool>portal.test.co.uk</ApplicationPool>
-            <Url>http://portal.test.co.uk</Url>
+            <ApplicationPool>shpt.test.co.uk</ApplicationPool>
+            <Url>http://shpt.test.co.uk</Url>
             <Port>80</Port>
             <UseHostHeader>false</UseHostHeader>
             <AddURLToLocalIntranetZone>true</AddURLToLocalIntranetZone>
@@ -137,13 +137,13 @@
                 <ManagedPath relativeUrl="help" explicit="true"/>
             </ManagedPaths>
             <SiteCollections>
-                <SiteCollection siteUrl="http://portal.test.co.uk">
-                    <Name>Portal Home</Name>
-                    <Description>Portal Home Site</Description>
+                <SiteCollection siteUrl="http://shpt.test.co.uk">
+                    <Name>Home</Name>
+                    <Description>Home Site</Description>
                     <HostNamedSiteCollection>false</HostNamedSiteCollection>
                     <Owner></Owner>
                     <CustomDatabase></CustomDatabase>
-                    <SearchUrl>http://portal.test.co.uk/search</SearchUrl>
+                    <SearchUrl>http://shpt.test.co.uk/search</SearchUrl>
                     <Template>SPSPORTAL#0</Template>
                     <LCID>1033</LCID>
                     <Locale>en-us</Locale>
@@ -184,7 +184,7 @@
                     <HostNamedSiteCollection>false</HostNamedSiteCollection>
                     <Owner></Owner>
                     <CustomDatabase></CustomDatabase>
-                    <SearchUrl>http://portal.test.co.uk/search</SearchUrl>
+                    <SearchUrl>http://mysites.test.co.uk/search</SearchUrl>
                     <Template>SPSMSITEHOST#0</Template>
                     <LCID>1033</LCID>
                     <Locale>en-us</Locale>
@@ -235,7 +235,7 @@
                 </DBAlias>
             </Database>
         </UserProfileServiceApp>
-        <EnterpriseSearchService Provision="localhost">
+        <EnterpriseSearchService Provision="false">
             <ContactEmail></ContactEmail>
             <ConnectionTimeout>60</ConnectionTimeout>
             <AcknowledgementTimeout>60</AcknowledgementTimeout>
@@ -251,7 +251,7 @@
                     <Partitioned>false</Partitioned>
                     <Partitions>1</Partitions>
                     <SearchServiceApplicationType>Regular</SearchServiceApplicationType>
-                    <ContentAccessAccount>Test\SP_SearchContent</ContentAccessAccount>
+                    <ContentAccessAccount>Test\sp_search</ContentAccessAccount>
                     <ContentAccessAccountPassword></ContentAccessAccountPassword>
                     <Database>
                         <Name>Search</Name>
@@ -381,7 +381,7 @@
         <AppManagementService Provision="localhost">
             <Name>App Management Service</Name>
             <ProxyName>App Management Service</ProxyName>
-            <AppDomain>apps.contoso.com</AppDomain>
+            <AppDomain>apps.test.co.uk</AppDomain>
             <Database>
                 <Name>AppManagement</Name>
                 <DBServer></DBServer>
@@ -415,7 +415,7 @@
             <Name>Work Management Service Application</Name>
             <ProxyName>Work Management Service Application</ProxyName>
         </WorkManagementService>
-        <MachineTranslationService Provision="localhost">
+        <MachineTranslationService Provision="false">
             <Name>Machine Translation Service</Name>
             <ProxyName>Machine Translation Service</ProxyName>
             <Database>
@@ -431,7 +431,7 @@
                 </DBAlias>
             </Database>
         </MachineTranslationService>
-        <PowerPointConversionService Provision="localhost">
+        <PowerPointConversionService Provision="false">
             <Name>PowerPoint Conversion Service Application</Name>
             <ProxyName>PowerPoint Conversion Service Application</ProxyName>
         </PowerPointConversionService>
